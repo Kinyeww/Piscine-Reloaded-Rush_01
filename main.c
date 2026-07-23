@@ -7,7 +7,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		printf("not enough arg\n");
+		printf("argc has to be exactly 2\n");
 		return (0);
 	}
 	size = check_size(av[1]);
