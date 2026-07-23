@@ -44,7 +44,7 @@ int	core(int x, int y, int **grid, char *av)
 	size = get_size(av);
 	clues = set_clue(size, av);
 	if (y == size)
-		return (!final_check_rule(clues, grid, size));
+		return (final_check_rule(clues, grid, size));
 	while (++grid[y][x] <= size)
 	{
 		if (is_unique(grid, x, y))
@@ -54,15 +54,15 @@ int	core(int x, int y, int **grid, char *av)
 			if (x < size - 1)
 			{
 				if (!core(x + 1, y, grid, av))
-					return (0);
+					return (1);
 			}
 			else
 			{
 				if (!core(0, y + 1, grid, av))
-					return (0);
+					return (1);
 			}
 		}
 	}
 	grid[y][x] = 0;
-	return (1);
+	return (0);
 }

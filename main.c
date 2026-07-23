@@ -41,9 +41,9 @@ int	main(int ac, char **av)
 	}
 	grid = create_grid(size);
 	if (core(0, 0, grid, av[1]))
-		write (1, "Error\n", 6);
-	else
 		print_solved(grid, size);
+	else
+		write (1, "Error\n", 6);
 	//free (clue);
 	//free_grid(grid, size);
 	return (1);
