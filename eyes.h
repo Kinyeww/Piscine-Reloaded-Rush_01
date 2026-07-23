@@ -18,10 +18,10 @@
 # define LEFT 2
 # define RIGHT 3
 
-int	top(int **grid, int pos, int x);
-int	bottom(int **grid, int pos, int x);
-int	left(int **grid, int pos, int x);
-int	right(int **grid, int pos, int x);
-int	eyes(int **grid, int arah, int pos, int x);
+int	top(int **grid, int pos, int size);
+int	bottom(int **grid, int pos, int size);
+int	left(int **grid, int pos, int size);
+int	right(int **grid, int pos, int size);
+int	eyes(int **grid, int arah, int pos, int size);
 
 #endif
