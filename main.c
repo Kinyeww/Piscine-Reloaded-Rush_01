@@ -4,12 +4,13 @@
 
 void	print_solved(int **grid, int size);
 int		**create_grid(int size);
+int		*set_clue(int size, char *clue);
 
 int	main(int ac, char **av)
 {
 	int	size;
-	//int	*clue;
-	int **grid;
+	int	*clue;
+	int	**grid;
 
 	if (ac != 2)
 	{
@@ -28,11 +29,35 @@ int	main(int ac, char **av)
 		printf("invalid input detected\n");
 		return (0);
 	}
-	//clue = set_clue();
-	grid = create_grid(size);
-	if (core(0, 0, grid, size))
-		print_solved(grid, size);
+	clue = set_clue(size, av[1]);
+	int	k = 0;
+	while (k < (size * 4))
+	{
+		printf("clue[%d] = %d\n", k, clue[k]);
+		k++;
+	}
+	// grid = create_grid(size);
+	// if (core(0, 0, grid, size))
+	// 	print_solved(grid, size);
 	return (1);
+}
+
+int	*set_clue(int size, char *clue)
+{
+	int	*clue_arr;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	clue_arr = malloc(sizeof(int) * (size * 4));
+	while (clue[j])
+	{
+		clue_arr[i] = clue[j] - '0';
+		i++;
+		j += 2;
+	}
+	return (clue_arr);
 }
 
 void	print_solved(int **grid, int size)
@@ -70,7 +95,7 @@ int	**create_grid(int size)
 		i++;
 	}
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		j = 0;
 		while (j < size)
