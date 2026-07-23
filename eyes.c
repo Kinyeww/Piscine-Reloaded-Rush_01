@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "eyes.h"
+
 //Grassy's explaination:
 //We're currently looking at each row individually
 //teaching the computer to understand the skyscraper concept
@@ -102,13 +104,13 @@ int	bottom(int **grid, int pos, int x)
 
 int	eyes(int **grid, int arah, int pos, int x)
 {
-	if (arah == 0)
+	if (arah == UP)
 		return (top(grid, pos, x));
-	if (arah == 1)
+	if (arah == DOWN)
 		return (bottom(grid, pos, x));
-	if (arah == 2)
+	if (arah == LEFT)
 		return (left(grid, pos, x));
-	if (arah == 3)
+	if (arah == RIGHT)
 		return (right(grid, pos, x));
 	return (0);
 }
