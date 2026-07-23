@@ -104,13 +104,13 @@ int	bottom(int **grid, int pos, int size)
 
 int	eyes(int **grid, int arah, int pos, int size)
 {
-	if (arah == UP)
+	if (arah == 0)
 		return (top(grid, pos, size));
-	if (arah == DOWN)
+	if (arah == 1)
 		return (bottom(grid, pos, size));
-	if (arah == LEFT)
+	if (arah == 2)
 		return (left(grid, pos, size));
-	if (arah == RIGHT)
+	if (arah == 3)
 		return (right(grid, pos, size));
 	return (0);
 }
