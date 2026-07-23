@@ -36,33 +36,32 @@ int	is_unique(int **grid, int x, int y)
 	return (1);
 }
 
-int	core(int x, int y, int **grid, char *av)
+int	core(int x, int y, int **grid, int size, int *clues)
 {
-	int	*clues;
-	int	size;
+	// int	*clues;
+	// int	size;
 
-	size = get_size(av);
-	clues = set_clue(size, av);
+	// size = get_size(av);
+	// clues = set_clue(size, av);
 	if (y == size)
 		return (final_check_rule(clues, grid, size));
 	while (++grid[y][x] <= size)
 	{
 		if (is_unique(grid, x, y))
 		{
-			// printf("is unique\n");
-			// print_solved(grid, size);
 			if (x < size - 1)
 			{
-				if (!core(x + 1, y, grid, av))
+				if (core(x + 1, y, grid, size, clues))
 					return (1);
 			}
 			else
 			{
-				if (!core(0, y + 1, grid, av))
+				if (core(0, y + 1, grid, size, clues))
 					return (1);
 			}
 		}
 	}
+	print_solved(grid, size);
 	grid[y][x] = 0;
 	return (0);
 }

@@ -25,7 +25,7 @@ int	check_is_num(char *str, int size)
 		i++;
 		if (str[i] == '\0')
 			break ;
-		if (str[i] != ' ')
+		if (str[i] != ' ' || str[i + 1] == '\0')
 			return (0);
 		i++;
 	}

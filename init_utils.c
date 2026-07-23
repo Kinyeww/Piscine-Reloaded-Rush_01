@@ -11,7 +11,7 @@ int	*set_clue(int size, char *clue)
 	i = 0;
 	j = 0;
 	clue_arr = malloc(sizeof(int) * (size * 4));
-	while (clue[j])
+	while (i < (size * 4))
 	{
 		clue_arr[i] = clue[j] - '0';
 		i++;
