@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eyes.h                                             :+:      :+:    :+:   */
+/*   brain.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amlee <amlee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/23 10:58:26 by amlee             #+#    #+#             */
-/*   Updated: 2026/07/23 10:58:28 by amlee            ###   ########.fr       */
+/*   Created: 2026/07/23 15:39:39 by amlee             #+#    #+#             */
+/*   Updated: 2026/07/23 15:39:41 by amlee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EYES_H
-# define EYES_H
+#include <eyes.h>
 
-int	top(int **grid, int pos, int size);
-int	bottom(int **grid, int pos, int size);
-int	left(int **grid, int pos, int size);
-int	right(int **grid, int pos, int size);
-int	eyes(int **grid, int arah, int pos, int size);
+int	brain(int **input, int **ans, int size)
+{
+	int	arah;
+	int	pos;
 
-#endif
+	arah = 0;
+	while (arah < 4)
+	{
+		pos = 0;
+		while (pos < size)
+		{
+			if (input[arah][pos] != eyes(ans, arah, pos))
+				return (0);
+			pos++;
+		}
+		arah++;
+	}
+	return (1);
+}
