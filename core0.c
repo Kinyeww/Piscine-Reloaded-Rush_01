@@ -15,25 +15,24 @@ int core(int x, int y, int **grid, int size) // current position is passed into 
     int current;
 
     current = grid[y][x];
+    if (x == size - 1 && y == size - 1 && final_check_rule())
+        return(1);
     while (current < size)
     {
         current++;
+        if (x == size - 1 && y != size - 1 && !check_rule(x))
+            break;
+        else if (x != size - 1 && y == size - 1 && !check_rule(y))
+            break;
+        else if (x == size - 1 && y == size - 1 && !final_check_rule())
+            break;
         if (!is_unique())
             core(x, y, grid, size);
         else if (is_unique() && x < size - 1)
             core(x + 1, y, grid, size);
         else if (is_unique() && x == size - 1)
             core(0, y + 1, grid, size);
-        if (x == size - 1 && y != size - 1 && !check_rule(x))
-            return (0);
-        else if (x != size - 1 && y == size - 1 && !check_rule(y))
-            return (0);
-        else if (x == size - 1 && y == size - 1 && !final_check_rule())
-            return (0);
-        else if (x == size - 1 && y == size - 1 && final_check_rule())
-            return(1);
-        else
-            return (0);
+        
     }
     current = 0;
     return (0);
