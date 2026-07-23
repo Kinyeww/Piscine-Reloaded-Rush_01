@@ -14,7 +14,7 @@
 //We're currently looking at each row individually
 //teaching the computer to understand the skyscraper concept
 //and then output-ing how many scrapers it sees.
-int	top(int **grid, int pos)
+int	top(int **grid, int pos, int x)
 {
 	int	i;
 	int	mem;
@@ -23,7 +23,7 @@ int	top(int **grid, int pos)
 	i = 0;
 	mem = 0;
 	qty = 0;
-	while (i < 4)
+	while (i < x)
 	{
 		if (grid[i][pos] > mem)
 		{
@@ -34,8 +34,9 @@ int	top(int **grid, int pos)
 	}
 	return (qty);
 }
+//int x is the grid size variable
 
-int	left(int **grid, int pos)
+int	left(int **grid, int pos, int x)
 {
 	int	i;
 	int	mem;
@@ -44,7 +45,7 @@ int	left(int **grid, int pos)
 	i = 0;
 	mem = 0;
 	qty = 0;
-	while (i < 4)
+	while (i < x)
 	{
 		if (grid[pos][i] > mem)
 		{
@@ -57,13 +58,13 @@ int	left(int **grid, int pos)
 }
 
 //now we start reading backwards ok!
-int	right(int **grid, int pos)
+int	right(int **grid, int pos, int x)
 {
 	int	i;
 	int	mem;
 	int	qty;
 
-	i = 4 - 1;
+	i = x - 1;
 	mem = 0;
 	qty = 0;
 	while (i > -1)
@@ -78,13 +79,13 @@ int	right(int **grid, int pos)
 	return (qty);
 }
 
-int	bottom(int **grid, int pos)
+int	bottom(int **grid, int pos, int x)
 {
 	int	i;
 	int	mem;
 	int	qty;
 
-	i = 4 - 1;
+	i = x - 1;
 	mem = 0;
 	qty = 0;
 	while (i > -1)
@@ -97,4 +98,17 @@ int	bottom(int **grid, int pos)
 		i--;
 	}
 	return (qty);
+}
+
+int	eyes(int **grid, int arah, int pos, int x)
+{
+	if (arah == 0)
+		return (top(grid, pos));
+	if (arah == 1)
+		return (bottom(grid, pos));
+	if (arah == 2)
+		return (left(grid, pos));
+	if (arah == 2)
+		return (right(grid, pos));
+	return (0);
 }
