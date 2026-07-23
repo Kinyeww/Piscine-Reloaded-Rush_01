@@ -12,28 +12,6 @@ int	check_input(char **av, int size)
 	return (size);
 }
 
-int	check_size(char *str)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			count++;
-		i++;
-	}
-	printf("count = %d\n", count);
-	if (count % 4 != 0)
-	{
-		printf("invalid arg size\n");
-		return (-1);
-	}
-	return (count / 4);
-}
-
 int	check_is_num(char *str, int size)
 {
 	int	i;

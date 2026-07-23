@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "core.h"
+#include "brain.h"
+#include "init_utils.h"
 
-int	is_unique(int **grid, int x, int y, int size)
+int	is_unique(int **grid, int x, int y)
 {
 	int	x2;
 	int	y2;
@@ -34,24 +36,29 @@ int	is_unique(int **grid, int x, int y, int size)
 	return (1);
 }
 
-int	core(int x, int y, int **grid, int size) // current position is passed into the function
+int	core(int x, int y, int **grid, char *av)
 {
-	if (y == size)// && final_check_rule())
-		return (0);
+	int	*clues;
+	int	size;
+
+	size = get_size(av);
+	clues = set_clue(size, av);
+	if (y == size)
+		return (!final_check_rule(clues, grid, size));
 	while (++grid[y][x] <= size)
 	{
-		if (is_unique(grid, x, y, size) && )
+		if (is_unique(grid, x, y))
 		{
-			printf("is unique\n");
-			print_solved(grid, size);
+			// printf("is unique\n");
+			// print_solved(grid, size);
 			if (x < size - 1)
 			{
-				if (!core(x + 1, y, grid, size))
+				if (!core(x + 1, y, grid, av))
 					return (0);
 			}
 			else
 			{
-				if (!core(0, y + 1, grid, size))
+				if (!core(0, y + 1, grid, av))
 					return (0);
 			}
 		}

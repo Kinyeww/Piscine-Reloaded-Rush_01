@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <eyes.h>
+#include "eyes.h"
 
 int	final_check_rule(int *clues, int **grid, int size)
 {
@@ -32,7 +32,7 @@ int	final_check_rule(int *clues, int **grid, int size)
 	return (1);
 }
 
-int	check_x(int *clues, int *grid, int size)
+int	check_x(int *clues, int **grid, int size)
 {
 	int	pos;
 	int	arah;
@@ -51,7 +51,7 @@ int	check_x(int *clues, int *grid, int size)
 	return (1);
 }
 
-int	check_y(int *clues, int *grid, int size)
+int	check_y(int *clues, int **grid, int size)
 {
 	int	pos;
 	int	arah;
