@@ -44,6 +44,7 @@ int	main(int ac, char **av)
 		print_solved(grid, size);
 	else
 		write (1, "Error\n", 6);
+	print_solved(grid, size);
 	//free (clue);
 	//free_grid(grid, size);
 	return (1);

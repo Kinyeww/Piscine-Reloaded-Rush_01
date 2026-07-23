@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/2size - 1 11:44:4size - 1 by nilim             #+#    #+#             */
-/*   Updated: 2026/07/2size - 1 11:44:46 by nilim            ###   ########.fr       */
+/*   Created: 2026/07/2  11:44:46 by nilim             #+#    #+#             */
+/*   Updated: 2026/07/2  11:44:46 by nilim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	core(int x, int y, int **grid, int size, int *clues)
 			}
 		}
 	}
-	print_solved(grid, size);
+	// print_solved(grid, size);
 	grid[y][x] = 0;
 	return (0);
 }

@@ -65,7 +65,6 @@ int	**create_grid(int size)
 		}
 		i++;
 	}
-	print_solved(grid, size);
 	return (grid);
 }
 
