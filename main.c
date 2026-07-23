@@ -40,7 +40,11 @@ int	main(int ac, char **av)
 		k++;
 	}
 	grid = create_grid(size);
-	core(0, 0, grid, av[1]);
-	print_solved(grid, size);
+	if (core(0, 0, grid, av[1]))
+		write (1, "Error\n", 6);
+	else
+		print_solved(grid, size);
+	//free (clue);
+	//free_grid(grid, size);
 	return (1);
 }

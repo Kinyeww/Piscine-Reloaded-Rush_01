@@ -18,12 +18,13 @@ int	final_check_rule(int *clues, int **grid, int size)
 	int	pos;
 
 	arah = 0;
-	pos = 0;
 	while (arah < 4)
 	{
+		pos = 0;
 		while (pos < size)
 		{
-			if (clues[pos] != eyes(grid, arah, pos, size))
+			if (clues[(arah * size) + pos]
+				!= eyes(grid, arah, pos, size))
 				return (0);
 			pos++;
 		}
