@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 		printf("invalid input detected\n");
 		return (0);
 	}
-	//core();
-	//print_solved();
+	if (core(0, 0, grid, size);
+		print_solved();
 	return (1);
 }
