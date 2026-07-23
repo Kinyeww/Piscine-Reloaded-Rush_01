@@ -12,7 +12,7 @@
 
 #include <eyes.h>
 
-int	brain(int **input, int **ans, int size)
+int	final_check_rule(int **clues, int **grid, int size)
 {
 	int	arah;
 	int	pos;
@@ -23,11 +23,49 @@ int	brain(int **input, int **ans, int size)
 		pos = 0;
 		while (pos < size)
 		{
-			if (input[arah][pos] != eyes(ans, arah, pos))
+			if (clues[arah][pos] != eyes(grid, arah, pos, size))
 				return (0);
 			pos++;
 		}
 		arah++;
+	}
+	return (1);
+}
+
+int	check_x(int *clues, int *grid, int size)
+{
+	int	pos;
+	int	arah;
+	int	i;
+
+	arah = 2;
+	pos = 0;
+	i = 0;
+	while (arah < 4)
+	{
+		if (clues[i] != eyes(grid, arah, pos, size))
+			return (0);
+		arah++;
+		i++;
+	}
+	return (1);
+}
+
+int	check_y(int *clues, int *grid, int size)
+{
+	int	pos;
+	int	arah;
+	int	i;
+
+	arah = 0;
+	pos = 0;
+	i = 0;
+	while (arah < 2)
+	{
+		if (clues[i] != eyes(grid, arah, pos, size))
+			return (0);
+		arah++;
+		i++;
 	}
 	return (1);
 }
