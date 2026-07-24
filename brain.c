@@ -32,7 +32,7 @@ int	final_check_rule(int *clues, int **grid, int size)
 	}
 	return (1);
 }
-
+/*
 int	check_x(int *clues, int **grid, int size)
 {
 	int	pos;
@@ -70,3 +70,4 @@ int	check_y(int *clues, int **grid, int size)
 	}
 	return (1);
 }
+*/

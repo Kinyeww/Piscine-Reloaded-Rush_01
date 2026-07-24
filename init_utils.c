@@ -1,6 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amlee <amlee@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/24 10:04:42 by amlee             #+#    #+#             */
+/*   Updated: 2026/07/24 10:04:44 by amlee            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "init_utils.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
+
+void	ft_putnbr(int nb);
 
 int	*set_clue(int size, char *clue)
 {
@@ -31,13 +45,14 @@ void	print_solved(int **grid, int size)
 		j = 0;
 		while (j < size)
 		{
-			printf("%d ", grid[i][j]);
+			ft_putnbr(grid[i][j]);
+			write(1, " ", 1);
 			j++;
 		}
-		printf("\n");
+		write(1, "\n", 1);
 		i++;
 	}
-	printf("\nend printing\n");
+	write(1, "\nPrinting Ended\n", 16);
 }
 
 int	**create_grid(int size)
@@ -81,10 +96,12 @@ int	get_size(char *str)
 			count++;
 		i++;
 	}
-	printf("count = %d\n", count);
+	write(1, "Count = ", 8);
+	ft_putnbr(count);
+	write(1, "\n", 1);
 	if (count % 4 != 0)
 	{
-		printf("invalid arg size\n");
+		write(1, "Invalid arg size\n", 17);
 		return (-1);
 	}
 	return (count / 4);
