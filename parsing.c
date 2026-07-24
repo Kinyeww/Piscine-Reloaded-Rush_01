@@ -53,6 +53,6 @@ void	free_grid(int **grid, int size)
 
 	i = size;
 	while (--i >= 0)
-		free (grid[i]);
-	free (grid);
+		free(grid[i]);
+	free(grid);
 }

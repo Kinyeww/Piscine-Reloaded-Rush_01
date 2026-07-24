@@ -46,7 +46,8 @@ void	print_solved(int **grid, int size)
 		while (j < size)
 		{
 			ft_putnbr(grid[i][j]);
-			write(1, " ", 1);
+			if (j < size - 1)
+				write(1, " ", 1);
 			j++;
 		}
 		write(1, "\n", 1);
