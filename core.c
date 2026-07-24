@@ -41,14 +41,18 @@ int	core(int n, int **grid, int size, int *clues)
 	int	x;
 	int	y;
 
-	x = n % 4;
-	y = n / 4;
-	if (y == size)
+	if (n == size * size)
 		return (final_check_rule(clues, grid, size));
+	x = n % size;
+	y = n / size;
 	while (++grid[y][x] <= size)
 	{
 		if (is_unique(grid, x, y))
 		{
+			if ((x == size - 1) && (!check_row(clues, grid, y, size)))
+				continue ;
+			if ((y == size - 1) && (!check_column(clues, grid, x, size)))
+				continue ;
 			if (core(n + 1, grid, size, clues))
 				return (1);
 		}

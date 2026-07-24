@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "eyes.h"
 #include "parsing.h"
 #include "core.h"
 #include "init_utils.h"
@@ -35,7 +34,6 @@ int	main(int ac, char **av)
 		print_solved(grid, size);
 	else
 		ft_printerror();
-	write (1, "finished\n", 9);
 	free(clue);
 	free_grid(grid, size);
 	return (0);
