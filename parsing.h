@@ -21,6 +21,4 @@ int		check_is_num(char *str, int size);
 void	ft_printerror(void);
 void	free_grid(int **grid, int size);
 
-// current position is passed into the function
-
 #endif
