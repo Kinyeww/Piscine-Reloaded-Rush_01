@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amlee <amlee@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/24 10:04:42 by amlee             #+#    #+#             */
+/*   Updated: 2026/07/24 10:04:44 by amlee            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "init_utils.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
 
 int	*set_clue(int size, char *clue)
 {
@@ -11,6 +23,8 @@ int	*set_clue(int size, char *clue)
 	i = 0;
 	j = 0;
 	clue_arr = malloc(sizeof(int) * (size * 4));
+	if (!clue_arr)
+		return (NULL);
 	while (i < (size * 4))
 	{
 		clue_arr[i] = clue[j] - '0';
@@ -31,13 +45,14 @@ void	print_solved(int **grid, int size)
 		j = 0;
 		while (j < size)
 		{
-			printf("%d ", grid[i][j]);
+			ft_putnbr(grid[i][j]);
+			if (j < size - 1)
+				write(1, " ", 1);
 			j++;
 		}
-		printf("\n");
+		write(1, "\n", 1);
 		i++;
 	}
-	printf("\nend printing\n");
 }
 
 int	**create_grid(int size)
@@ -81,11 +96,28 @@ int	get_size(char *str)
 			count++;
 		i++;
 	}
-	printf("count = %d\n", count);
 	if (count % 4 != 0)
-	{
-		printf("invalid arg size\n");
 		return (-1);
-	}
 	return (count / 4);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		write (1, &"0123456789"[nb], 1);
 }

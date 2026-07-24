@@ -33,40 +33,20 @@ int	final_check_rule(int *clues, int **grid, int size)
 	return (1);
 }
 
-int	check_x(int *clues, int **grid, int size)
+int	check_row(int *clues, int **grid, int row, int size)
 {
-	int	pos;
-	int	arah;
-	int	i;
-
-	arah = 2;
-	pos = 0;
-	i = 0;
-	while (arah < 4)
-	{
-		if (clues[i] != eyes(grid, arah, pos, size))
-			return (0);
-		arah++;
-		i++;
-	}
+	if ((eyes(grid, 2, row, size)) != clues[(2 * size) + row])
+		return (0);
+	if ((eyes(grid, 3, row, size)) != clues[(3 * size) + row])
+		return (0);
 	return (1);
 }
 
-int	check_y(int *clues, int **grid, int size)
+int	check_column(int *clues, int **grid, int col, int size)
 {
-	int	pos;
-	int	arah;
-	int	i;
-
-	arah = 0;
-	pos = 0;
-	i = 0;
-	while (arah < 2)
-	{
-		if (clues[i] != eyes(grid, arah, pos, size))
-			return (0);
-		arah++;
-		i++;
-	}
+	if ((eyes(grid, 0, col, size)) != clues[(0 * size) + col])
+		return (0);
+	if ((eyes(grid, 1, col, size)) != clues[(1 * size) + col])
+		return (0);
 	return (1);
 }

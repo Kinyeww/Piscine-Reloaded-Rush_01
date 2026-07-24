@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nilim <nilim@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: amlee <amlee@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/2  11:44:46 by nilim             #+#    #+#             */
-/*   Updated: 2026/07/2  11:44:46 by nilim            ###   ########.fr       */
+/*   Created: 2026/07/24 10:06:24 by amlee             #+#    #+#             */
+/*   Updated: 2026/07/24 10:06:30 by amlee            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,27 @@ int	is_unique(int **grid, int x, int y)
 	return (1);
 }
 
-int	core(int x, int y, int **grid, int size, int *clues)
+int	core(int n, int **grid, int size, int *clues)
 {
-	// int	*clues;
-	// int	size;
+	int	x;
+	int	y;
 
-	// size = get_size(av);
-	// clues = set_clue(size, av);
-	if (y == size)
+	if (n == size * size)
 		return (final_check_rule(clues, grid, size));
+	x = n % size;
+	y = n / size;
 	while (++grid[y][x] <= size)
 	{
 		if (is_unique(grid, x, y))
 		{
-			if (x < size - 1)
-			{
-				if (core(x + 1, y, grid, size, clues))
-					return (1);
-			}
-			else
-			{
-				if (core(0, y + 1, grid, size, clues))
-					return (1);
-			}
+			if ((x == size - 1) && (!check_row(clues, grid, y, size)))
+				continue ;
+			if ((y == size - 1) && (!check_column(clues, grid, x, size)))
+				continue ;
+			if (core(n + 1, grid, size, clues))
+				return (1);
 		}
 	}
-	// print_solved(grid, size);
 	grid[y][x] = 0;
 	return (0);
 }
