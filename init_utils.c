@@ -14,8 +14,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void	ft_putnbr(int nb);
-
 int	*set_clue(int size, char *clue)
 {
 	int	*clue_arr;
@@ -52,7 +50,6 @@ void	print_solved(int **grid, int size)
 		write(1, "\n", 1);
 		i++;
 	}
-	write(1, "\nPrinting Ended\n", 16);
 }
 
 int	**create_grid(int size)
@@ -96,13 +93,28 @@ int	get_size(char *str)
 			count++;
 		i++;
 	}
-	write(1, "Count = ", 8);
-	ft_putnbr(count);
-	write(1, "\n", 1);
 	if (count % 4 != 0)
-	{
-		write(1, "Invalid arg size\n", 17);
 		return (-1);
-	}
 	return (count / 4);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return ;
+	}
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		write (1, &"0123456789"[nb], 1);
 }
