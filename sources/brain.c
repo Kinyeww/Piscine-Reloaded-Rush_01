@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "eyes.h"
+#include "brain.h"
 
 int	final_check_rule(int *clues, int **grid, int size)
 {
@@ -47,6 +48,42 @@ int	check_column(int *clues, int **grid, int col, int size)
 	if ((eyes(grid, 0, col, size)) != clues[(0 * size) + col])
 		return (0);
 	if ((eyes(grid, 1, col, size)) != clues[(1 * size) + col])
+		return (0);
+	return (1);
+}
+
+int	check_partial_row(int **grid, int n, int size, int *clues)
+{
+	int	x;
+	int	y;
+	int	visible;
+	int	possible;
+
+	x = n % size;
+	y = n / size;
+	visible = eyes(grid, 2, y, size);
+	if (visible > clues[(2 * size) + y])
+		return (0);
+	possible = size - find_max_row(grid, x, y);
+	if (visible + possible < clues[(2 * size) + y])
+		return (0);
+	return (1);
+}
+
+int	check_partial_column(int **grid, int n, int size, int *clues)
+{
+	int	x;
+	int	y;
+	int	visible;
+	int	possible;
+
+	x = n % size;
+	y = n / size;
+	visible = eyes(grid, 0, x, size);
+	if (visible > clues[x])
+		return (0);
+	possible = size - find_max_col(grid, x, y);
+	if (visible + possible < clues[x])
 		return (0);
 	return (1);
 }

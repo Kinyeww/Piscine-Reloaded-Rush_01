@@ -47,15 +47,18 @@ int	core(int n, int **grid, int size, int *clues)
 	y = n / size;
 	while (++grid[y][x] <= size)
 	{
-		if (is_unique(grid, x, y))
-		{
-			if ((x == size - 1) && (!check_row(clues, grid, y, size)))
-				continue ;
-			if ((y == size - 1) && (!check_column(clues, grid, x, size)))
-				continue ;
-			if (core(n + 1, grid, size, clues))
-				return (1);
-		}
+		if (!is_unique(grid, x, y))
+			continue ;
+		if (!check_partial_row(grid, n, size, clues))
+			continue ;
+		if (!check_partial_column(grid, n, size, clues))
+			continue ;
+		if ((x == size - 1) && (!check_row(clues, grid, y, size)))
+			continue ;
+		if ((y == size - 1) && (!check_column(clues, grid, x, size)))
+			continue ;
+		if (core(n + 1, grid, size, clues))
+			return (1);
 	}
 	grid[y][x] = 0;
 	return (0);
